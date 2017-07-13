@@ -15,11 +15,7 @@ namespace cine.Controladores
     {
        
         Conexion con = new Conexion();
-        public void actualizarUsuario( Usuarios usuario)
-        {
-            
-
-        }
+   
 
     
 

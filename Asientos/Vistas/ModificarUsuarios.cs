@@ -14,38 +14,17 @@ namespace cine.Vistas
 {
     public partial class ModificarUsuarios : AgregarUsuarios
     {
+        Usuarios usuarioEncontrado = new Usuarios();
         public ModificarUsuarios()
         {
             InitializeComponent();
         }
 
-        private void ModificarUsuarios_Load(object sender, EventArgs e)
-        {
-            UsuariosDAO ud = new UsuariosDAO();
-            List<Usuarios> usuarios = ud.obtenerTodos();
-
-            foreach (Usuarios u in usuarios)
-            {
-                cbUsuariosRegistrados.Items.Add(u.Nombre_usuario);
-
-                
-                
-            }
 
 
+  
 
-            
-        }
-
-        public string usuarioSeleccionado()
-        {
-            return cbUsuariosRegistrados.SelectedText;
-        }
-
-        private void btnRegistrar_Click(object sender, EventArgs e)
-        {
-
-        }
+  
 
         private void btnCerrar_Click(object sender, EventArgs e)
         {
@@ -57,54 +36,69 @@ namespace cine.Vistas
 
         }
 
-        private void cbUsuariosRegistrados_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
+   
 
         private void button1_Click(object sender, EventArgs e)
         {
             UsuariosDAO ud = new UsuariosDAO();
             List<Usuarios> usuarios = ud.obtenerTodos();
+           
+
             bool validado = false;
-            Usuarios us = new Usuarios();
+    
 
-            string userSelected = cbUsuariosRegistrados.SelectedItem.ToString();
-
-            foreach (Usuarios u in usuarios)
+            foreach( Usuarios u in usuarios)
             {
-               
-
-                if (u.Nombre_usuario ==  usuarioSeleccionado()){
-                   
-                    us = u;
+                if( txtBusquedaUsuarios.Text == u.Nombre_usuario)
+                {
                     
-                    validado = true;
 
-                }
-                else
+                    usuarioEncontrado = u;
+                    validado = true;
+                    break;
+                }else
                 {
                     validado = false;
                 }
-
             }
 
             if (validado)
             {
-                txtNombreUs.Text = us.Nombre_usuario;
-                txtEdadUs.Text = Convert.ToString(us.Edad_usuario);
-                txtPassordUs.Text = us.Password;
-                txtDireccionUs.Text = us.Direccion;
-                txtCorreoUs.Text = us.Correo;
-
+                txtPassordUs.PasswordChar = '\0';
+                desplegarValoreUsuario();
+                
             }
             else
             {
-                MessageBox.Show("Usuario no seleccionado");
+                MessageBox.Show("Usuario " + txtBusquedaUsuarios.Text + "  no existe ");
             }
 
+        }
+
+        public void desplegarValoreUsuario()
+        {
+            txtNombreUs.Text = usuarioEncontrado.Nombre_usuario;
+            txtEdadUs.Text = Convert.ToString(usuarioEncontrado.Edad_usuario);
+            txtPassordUs.Text = usuarioEncontrado.Password;
+            txtDireccionUs.Text = usuarioEncontrado.Direccion;
+            txtCorreoUs.Text = usuarioEncontrado.Correo;
+
+        }
 
 
+        private void btnModificar_Click(object sender, EventArgs e)
+        {
+            UsuariosDAO u = new UsuariosDAO();
+            Usuarios usuarioModificado = new Usuarios();
+            usuarioModificado.Nombre_usuario = txtNombreUs.Text;
+            usuarioModificado.Edad_usuario = Convert.ToInt16(txtEdadUs.Text);
+            usuarioModificado.Password = txtPassordUs.Text;
+            usuarioModificado.Direccion = txtDireccionUs.Text;
+            usuarioModificado.Correo = txtCorreoUs.Text;
+
+            u.actualizar(usuarioModificado);
+
+            usuarioModificado.Tipo_usuario = validarTipoUsuario();
         }
     }
 }

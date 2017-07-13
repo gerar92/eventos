@@ -29,8 +29,9 @@
         private void InitializeComponent()
         {
             this.lbBuscarUsuario = new System.Windows.Forms.Label();
-            this.cbUsuariosRegistrados = new System.Windows.Forms.ComboBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnBuscarUsuarios = new System.Windows.Forms.Button();
+            this.txtBusquedaUsuarios = new System.Windows.Forms.TextBox();
+            this.btnModificar = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -117,7 +118,8 @@
             this.btnRegistrar.Location = new System.Drawing.Point(21, 366);
             this.btnRegistrar.TabIndex = 8;
             this.btnRegistrar.Text = "Modificar";
-            this.btnRegistrar.Click += new System.EventHandler(this.btnRegistrar_Click);
+            this.btnRegistrar.Visible = false;
+      
             // 
             // btnCerrar
             // 
@@ -142,27 +144,43 @@
             this.lbBuscarUsuario.TabIndex = 16;
             this.lbBuscarUsuario.Text = "Buscar Usuario";
             // 
-            // cbUsuariosRegistrados
+            // btnBuscarUsuarios
             // 
-            this.cbUsuariosRegistrados.FormattingEnabled = true;
-            this.cbUsuariosRegistrados.Location = new System.Drawing.Point(202, 52);
-            this.cbUsuariosRegistrados.Name = "cbUsuariosRegistrados";
-            this.cbUsuariosRegistrados.Size = new System.Drawing.Size(121, 20);
-            this.cbUsuariosRegistrados.TabIndex = 17;
-            this.cbUsuariosRegistrados.SelectedIndexChanged += new System.EventHandler(this.cbUsuariosRegistrados_SelectedIndexChanged);
+            this.btnBuscarUsuarios.BackColor = System.Drawing.Color.Transparent;
+            this.btnBuscarUsuarios.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnBuscarUsuarios.ForeColor = System.Drawing.Color.DeepSkyBlue;
+            this.btnBuscarUsuarios.Location = new System.Drawing.Point(518, 49);
+            this.btnBuscarUsuarios.Name = "btnBuscarUsuarios";
+            this.btnBuscarUsuarios.Size = new System.Drawing.Size(104, 23);
+            this.btnBuscarUsuarios.TabIndex = 18;
+            this.btnBuscarUsuarios.Text = "Buscar";
+            this.btnBuscarUsuarios.UseVisualStyleBackColor = false;
+            this.btnBuscarUsuarios.Click += new System.EventHandler(this.button1_Click);
             // 
-            // button1
+            // txtBusquedaUsuarios
             // 
-            this.button1.BackColor = System.Drawing.Color.Transparent;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.ForeColor = System.Drawing.Color.DeepSkyBlue;
-            this.button1.Location = new System.Drawing.Point(354, 52);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(104, 23);
-            this.button1.TabIndex = 18;
-            this.button1.Text = "Mostrar datos";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.txtBusquedaUsuarios.BackColor = System.Drawing.Color.GhostWhite;
+            this.txtBusquedaUsuarios.Cursor = System.Windows.Forms.Cursors.Default;
+            this.txtBusquedaUsuarios.Font = new System.Drawing.Font("Arial Rounded MT Bold", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBusquedaUsuarios.ForeColor = System.Drawing.Color.MediumBlue;
+            this.txtBusquedaUsuarios.Location = new System.Drawing.Point(202, 57);
+            this.txtBusquedaUsuarios.Multiline = true;
+            this.txtBusquedaUsuarios.Name = "txtBusquedaUsuarios";
+            this.txtBusquedaUsuarios.Size = new System.Drawing.Size(272, 22);
+            this.txtBusquedaUsuarios.TabIndex = 20;
+            // 
+            // btnModificar
+            // 
+            this.btnModificar.BackColor = System.Drawing.Color.Transparent;
+            this.btnModificar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnModificar.ForeColor = System.Drawing.Color.DeepSkyBlue;
+            this.btnModificar.Location = new System.Drawing.Point(21, 366);
+            this.btnModificar.Name = "btnModificar";
+            this.btnModificar.Size = new System.Drawing.Size(104, 23);
+            this.btnModificar.TabIndex = 21;
+            this.btnModificar.Text = "Modificar";
+            this.btnModificar.UseVisualStyleBackColor = false;
+            this.btnModificar.Click += new System.EventHandler(this.btnModificar_Click);
             // 
             // ModificarUsuarios
             // 
@@ -170,14 +188,14 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
             this.ClientSize = new System.Drawing.Size(678, 392);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.cbUsuariosRegistrados);
+            this.Controls.Add(this.btnModificar);
+            this.Controls.Add(this.txtBusquedaUsuarios);
+            this.Controls.Add(this.btnBuscarUsuarios);
             this.Controls.Add(this.lbBuscarUsuario);
             this.Cursor = System.Windows.Forms.Cursors.Default;
             this.Name = "ModificarUsuarios";
             this.Text = "ModificarUsuarios";
             this.TransparencyKey = System.Drawing.Color.Black;
-            this.Load += new System.EventHandler(this.ModificarUsuarios_Load);
             this.Controls.SetChildIndex(this.btnCerrar, 0);
             this.Controls.SetChildIndex(this.btnSalir, 0);
             this.Controls.SetChildIndex(this.label1, 0);
@@ -200,8 +218,9 @@
             this.Controls.SetChildIndex(this.rbTaquilla, 0);
             this.Controls.SetChildIndex(this.btnRegistrar, 0);
             this.Controls.SetChildIndex(this.lbBuscarUsuario, 0);
-            this.Controls.SetChildIndex(this.cbUsuariosRegistrados, 0);
-            this.Controls.SetChildIndex(this.button1, 0);
+            this.Controls.SetChildIndex(this.btnBuscarUsuarios, 0);
+            this.Controls.SetChildIndex(this.txtBusquedaUsuarios, 0);
+            this.Controls.SetChildIndex(this.btnModificar, 0);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -210,7 +229,8 @@
         #endregion
 
         private System.Windows.Forms.Label lbBuscarUsuario;
-        private System.Windows.Forms.ComboBox cbUsuariosRegistrados;
-        public System.Windows.Forms.Button button1;
+        public System.Windows.Forms.Button btnBuscarUsuarios;
+        private System.Windows.Forms.TextBox txtBusquedaUsuarios;
+        public System.Windows.Forms.Button btnModificar;
     }
 }
