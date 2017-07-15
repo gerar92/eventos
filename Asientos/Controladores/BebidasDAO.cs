@@ -14,7 +14,7 @@ namespace cine.Controladores
     {
 
         Conexion con = new Conexion();
-        public void actualizarUsuario(Usuarios usuario)
+        public void actualizarBebidas( Bebidas bebidas)
         {
 
 
@@ -22,7 +22,7 @@ namespace cine.Controladores
 
 
 
-        public void guardar(Bebidas bebidas)
+        public void guardarBebidas(Bebidas bebidas)
         {
             MySqlConnection conexion = con.conectar();
             string query = "insert into bebidas( nombre_bebida, precio,inventario_dulceria_id_inventario_dulceria, imagen) values(?nombreBebidas,?precioBebida,?inventarioDulceria,?imagenBebida)";
@@ -39,15 +39,12 @@ namespace cine.Controladores
 
             MessageBox.Show("Registro exitoso");
         }
-        public void EliminarUsuario(Usuarios usuario)
+        public void EliminarBebida( Bebidas bebidas)
         {
 
         }
 
-        public void actualizar(Usuarios usuarios)
-        {
-
-        }
+        
         public List<Bebidas> obtenerTodos()
         {
             List<Bebidas> Bebidas = new List<Bebidas>();

@@ -68,8 +68,12 @@
   <ItemGroup>
     <Compile Include="Controladores\AsientoDAO.cs" />
     <Compile Include="Controladores\BebidasDAO.cs" />
+    <Compile Include="Controladores\DulcesDAO.cs" />
+    <Compile Include="Controladores\SalaDAO.cs" />
     <Compile Include="Modelos\Asiento.cs" />
     <Compile Include="Modelos\Bebidas.cs" />
+    <Compile Include="Modelos\Dulces.cs" />
+    <Compile Include="Modelos\Sala.cs" />
     <Compile Include="Vistas\AgregarUsuarios.cs">
       <SubType>Form</SubType>
     </Compile>
